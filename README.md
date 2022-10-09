@@ -1,6 +1,6 @@
 # Player_bidding_system
 <hl>
-<p>It is a mcq-test based web application created using Java Spring Boot. It is generally developed to understand the Spring MVC and Spring Boot framework's features.</p>
+<p>It is a netbeans java swing project with sql server.</p>
 
 # Project Features
 <hl>
@@ -10,7 +10,6 @@
     <li>Home Page</li>
     <li>Registration Page</li>
     <li>All Team Information Page</li>
-    <li>Login Page</li>
     <li>Rules Page</li>
     <li>Bidding Page</li>
   </ol>
@@ -19,9 +18,9 @@
 <hl>
   <hl>
   <ol>
-    <li>create a Spring Boot initializer project</li>
-    <li>add dependencies Spring Web, Spring Data JPA, Spring boot dev tools, Thymeleaf, MySQL Driver</li>
-    <li>create a database in your MySQL workbench</li>
+    <li>create a netbeans  project</li>
+    <li>add  different jar files, SQL JDBC Driver</li>
+    <li>create a database in your Microsoft SQL Server Management Studio </li>
 </ol>
     
 # Project Description:
