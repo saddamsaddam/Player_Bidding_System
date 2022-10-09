@@ -34,3 +34,7 @@
 ![Screenshot 2022-10-09 165825](https://user-images.githubusercontent.com/56682452/194753696-ad21f9b3-a907-42ff-a55c-18018ee826a5.png)
 # All Team Information
 ![Screenshot 2022-10-09 171518](https://user-images.githubusercontent.com/56682452/194753839-1a682b16-170e-4227-bfe0-37a51c611941.png)
+# Rules
+![Screenshot 2022-10-09 172014](https://user-images.githubusercontent.com/56682452/194754017-87a10ace-0293-4e79-bae7-2fd5fbb56214.png)
+# Bidding
+![Screenshot 2022-10-09 172303](https://user-images.githubusercontent.com/56682452/194754149-64352ae3-8ddb-4337-b17a-56e6e5f363ac.png)
