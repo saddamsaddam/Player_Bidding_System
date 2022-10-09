@@ -1,0 +1,308 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Home_folder;
+
+import TeamOwner_folder.*;
+import Bidding_folder.*;
+import player_bidding.registration.*;
+import TeamOwner_folder.*;
+import java.awt.Image;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import validationCheck.validationCheck;
+
+/**
+ *
+ * @author 01957
+ */
+public class TEAM_VIEW_HOME extends javax.swing.JFrame {
+
+  // String total_match;
+    /**
+     * Creates new form Player_Registration
+     */
+    String pvemail,pvpass;int selectorpage;String teamn,TT;boolean teamcheck=false;
+     ArrayList<TEAMVIEW_HOME>  playerList=new ArrayList<>();
+    public TEAM_VIEW_HOME() throws ClassNotFoundException {
+        initComponents();
+        this.setVisible(true);
+        this.setSize(1200,1000);
+        this.setLocationRelativeTo(null);
+        reamin();
+        
+       
+       
+                    System.out.println(teamn+"Pkkkk");
+
+    }
+
+
+public void TEAMNAMEPASS( String teamname){
+    this.teamn=teamname;
+}
+public void homepagereturn2( int PAGE){
+    this.selectorpage=PAGE;
+}
+
+   public void profile(String pvemail,String pvpass )
+    {
+        this.pvemail=pvemail;
+        this.pvpass=pvpass;
+    }
+   /*
+       public  PLAYER(String NAME,String DEPARTMENT_NAME,String CATEGORY ,int  PROPOSAL_PRICE,String EMAIL,byte[]IMAGE,int TOTAL_RUN,
+    int TOTAL_MATCH ,int TOTAL_WICKET,int AVG_RUN  )
+*/
+   //SHOWING DATA IN TABLE
+    public void reamin()
+    {
+         REMAINIST TL=new REMAINIST();
+      ArrayList<REMAINIST.TEAMLIST> teamlist = TL.TEAMSEARCH();
+      
+       DefaultTableModel model=(DefaultTableModel) myTable1.getModel();
+     Object[]row =new Object[1];
+     // System.out.println(list.size());
+     for(int i=0;i<teamlist.size();i++)
+     {
+       row[0]=teamlist.get(i).getTEAM_NAME();
+       //remaining balance calculate
+        
+         // System.out.println(row[3]);
+       model.addRow(row);
+     }
+      
+    }
+    //SHOWING DATA IN FIRST TABLE
+  public void show_usersS() throws ClassNotFoundException
+   {
+      ArrayList<TEAMVIEW_HOME> list=playerList();
+      DefaultTableModel model=(DefaultTableModel) myTable.getModel();
+     Object[]row =new Object[5];
+     //     public SOLDED(int ID, String NAME, String EMAIL, String CATEGORY, String DEPARTMENT_NAME, String TEAM_NAME, int PRICE) {
+
+     for(int i=0;i<list.size();i++)
+     {
+       row[0]=list.get(i).getNAME();
+        row[1]=list.get(i).getEMAIL();
+         row[2]=list.get(i).getCATEGORY();
+        row[3]=list.get(i).getDEPARTMENT_NAME();
+        row[4]=list.get(i).getPRICE();
+          
+         
+        
+ 
+       
+       model.addRow(row);
+     }
+   }
+
+  //ADING DATA IN ARRAYLIST
+   public ArrayList<TEAMVIEW_HOME> playerList(){
+       int jj=0;
+       validationCheck ff=new  validationCheck();
+        teamcheck= ff.teamcheck(TEXTBOX.getText());
+         System.out.println(teamcheck);
+        if(teamcheck==false)
+        {
+             JOptionPane.showMessageDialog(null,"Team Does Not Exist");
+            
+            
+        }
+        else
+        {
+       
+      // ArrayList<TEAMVIEW_HOME>  playerList=new ArrayList<>();
+       try {
+          
+         
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url="jdbc:sqlserver://SADDAMNVN:1433;databaseName=Player_bidding;integratedSecurity=true;";
+            java.sql.Connection  con =DriverManager.getConnection(url);
+           
+            String querymax=" SELECT  P.ID,P.NAME,P.EMAIL,P.CATEGORY,P.DEPARTMENT_NAME,B.TEAM_NAME,B.PRICE FROM PLAYER_REGISTRATION P ,BIDDING_TABLE B where P.ID = B.PLAYER_ID AND B.TEAM_NAME='"+TEXTBOX.getText()+"'";
+            Statement state=con.createStatement();
+            ResultSet rrr= state.executeQuery(querymax);
+            TEAMVIEW_HOME player;
+          
+          while(rrr.next()){
+              player=new TEAMVIEW_HOME(rrr.getString("NAME"),rrr.getString("EMAIL"),rrr.getString("CATEGORY"),rrr.getString("DEPARTMENT_NAME"),rrr.getInt("PRICE"));
+          playerList.add(player);
+          }
+
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+            System.out.println("Sorry bro");
+        } 
+           
+        }
+     
+        return playerList; 
+       
+   }
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollPane1 = new javax.swing.JScrollPane();
+        myTable = new javax.swing.JTable();
+        TEAM_NAME = new javax.swing.JButton();
+        TEXTBOX = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        myTable1 = new javax.swing.JTable();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().setLayout(null);
+
+        myTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NAME", "EMAIL", "CATEGORY", "DEPT_NAME", "BIDDED PRICE"
+            }
+        ));
+        jScrollPane1.setViewportView(myTable);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(0, 182, 1020, 590);
+
+        TEAM_NAME.setText("Team Name");
+        getContentPane().add(TEAM_NAME);
+        TEAM_NAME.setBounds(30, 130, 150, 30);
+        getContentPane().add(TEXTBOX);
+        TEXTBOX.setBounds(230, 130, 100, 30);
+
+        jButton2.setText("SEARCH");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(360, 130, 100, 30);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 51));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("SINGLE TEAM VIEW");
+
+        jButton1.setText("BACK");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(324, 324, 324)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 577, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(158, 158, 158))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel1))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 0, 1280, 110);
+
+        myTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "TEAM_NAME"
+            }
+        ));
+        jScrollPane2.setViewportView(myTable1);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(1042, 182, 130, 590);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+       
+      // playerList();
+        try {
+             DefaultTableModel model=(DefaultTableModel) myTable.getModel();
+            model.setRowCount(0);
+            show_usersS();
+            
+            
+// TODO add your handling code here:
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TEAM_VIEW_HOME.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+      
+        Home_form hf=new Home_form();
+  dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /*
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new TEAM_VIEW_HOME().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TEAM_VIEW_HOME.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton TEAM_NAME;
+    private javax.swing.JTextField TEXTBOX;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable myTable;
+    private javax.swing.JTable myTable1;
+    // End of variables declaration//GEN-END:variables
+}
