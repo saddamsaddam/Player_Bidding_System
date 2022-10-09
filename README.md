@@ -1,6 +1,6 @@
 # Player_bidding_system
 <hl>
-<p>It is a netbeans java swing project with sql server.</p>
+<p>It is a  java swing netbeans project with sql server.</p>
 
 # Project Features
 <hl>
@@ -43,3 +43,6 @@
 ![Screenshot 2022-10-09 172014](https://user-images.githubusercontent.com/56682452/194754017-87a10ace-0293-4e79-bae7-2fd5fbb56214.png)
 # Bidding
 ![Screenshot 2022-10-09 172303](https://user-images.githubusercontent.com/56682452/194754149-64352ae3-8ddb-4337-b17a-56e6e5f363ac.png)
+# Conclusion
+ <hl>
+ <p> I am still working with security,android app,desktop application,web application.</p>
