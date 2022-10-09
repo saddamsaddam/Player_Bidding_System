@@ -32,3 +32,5 @@
 ![Screenshot 2022-10-09 165324](https://user-images.githubusercontent.com/56682452/194753533-94f92bbd-cf35-469a-a18a-d40ba174c8a6.png)
 # Registration Page
 ![Screenshot 2022-10-09 165825](https://user-images.githubusercontent.com/56682452/194753696-ad21f9b3-a907-42ff-a55c-18018ee826a5.png)
+# All Team Information
+![Screenshot 2022-10-09 171518](https://user-images.githubusercontent.com/56682452/194753839-1a682b16-170e-4227-bfe0-37a51c611941.png)
