@@ -7,6 +7,12 @@
   <ol type="i">
     <li>WelCome Page</li>
     <li>Login Page</li>
+    <li>Home Page</li>
+    <li>Registration Page</li>
+    <li>All Team Information Page</li>
+    <li>Login Page</li>
+    <li>Rules Page</li>
+    <li>Bidding Page</li>
   </ol>
 
 # Installation Process
